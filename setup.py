@@ -33,7 +33,7 @@ def find_version(fname):
         raise RuntimeError('Cannot find version information')
     return version
 
-__version__ = find_version("mfr/__init__.py")
+__version__ = find_version("mfr_fits/__init__.py")
 
 
 def read(fname):
@@ -45,12 +45,12 @@ setup(
     name='mfr_fits',
     version=__version__,
     description='HTML fits renderer for Python',
-    long_description=(read("README.rst") + '\n\n' +
-                        read("HISTORY.rst")),
+    long_description=(read("README.rst")),
     author='Bryan Gorges',
     author_email='bgorges3@gmail.com',
+    install_requires='mfr',
     url='https://github.com/Ghalko/mfr_fits',
-    packages=find_packages(exclude=("test*", 'previewer')),
+    packages=find_packages(exclude=("test*",)),
     include_package_data=True,
     # license=read("LICENSE"),
     zip_safe=False,
@@ -66,12 +66,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
     ],
-    entry_points={
-        'console_scripts': [
-            "mfr_fits = mfr_fits.cli:main"
-        ]
-    },
-    test_suite='tests',
     tests_require=['pytest'],
     cmdclass={'test': PyTest}
 
